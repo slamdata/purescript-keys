@@ -26,8 +26,9 @@ module Data.Key
 
 import Prelude
 import Data.Char (fromCharCode, toUpper)
-import Data.String (fromChar)
-import Data.Foldable (Foldable, foldl)
+import Data.Array (singleton, nub, sort)
+import Data.String (fromChar, joinWith)
+import Data.Foldable (Foldable, foldMap)
 
 data Platform = Mac | Other
 
@@ -85,15 +86,15 @@ print :: Platform -> Key -> String
 print Mac = printMac
 print _ = printOther
 
-seperator :: Platform -> String
-seperator Mac = ""
-seperator _ = "+"
+separator :: Platform -> String
+separator Mac = ""
+separator _ = "+"
+
+toArray :: forall f a. (Foldable f) => f a -> Array a
+toArray = foldMap singleton
 
 printCombination :: forall f. (Foldable f) => Platform -> f Key -> String
-printCombination p = foldl (printAndAppend p) ""
-  where
-  printAndAppend :: Platform -> String -> Key -> String
-  printAndAppend p s = print p >>> flip append (seperator p) >>> append s
+printCombination p = toArray >>> sort >>> nub >>> map (print p) >>> joinWith (separator p)
 
 instance eqKey :: Eq Key where
   eq Meta Meta = true

@@ -1,4 +1,4 @@
-module Control.Monad.Eff.Key where
+module Control.Monad.Eff.Key (fromKeyCode, print, printCombination) where
 
 import Control.Monad.Eff.Class (MonadEff)
 import Control.Monad.Eff (Eff())
