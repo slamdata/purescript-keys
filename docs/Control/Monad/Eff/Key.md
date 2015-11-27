@@ -1,35 +1,5 @@
 ## Module Control.Monad.Eff.Key
 
-#### `Navigator`
-
-``` purescript
-data Navigator :: *
-```
-
-#### `navigator`
-
-``` purescript
-navigator :: forall eff. Window -> Eff (dom :: DOM | eff) Navigator
-```
-
-#### `platform`
-
-``` purescript
-platform :: forall eff. Navigator -> Eff (dom :: DOM | eff) String
-```
-
-#### `getPlatform`
-
-``` purescript
-getPlatform :: forall eff. Eff (dom :: DOM | eff) String
-```
-
-#### `parsePlatform`
-
-``` purescript
-parsePlatform :: String -> Platform
-```
-
 #### `fromKeyCode`
 
 ``` purescript
