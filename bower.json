@@ -1,0 +1,19 @@
+{
+  "name": "purescript-keys",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-control": "~0.3.2",
+    "purescript-dom": "~0.2.10",
+    "purescript-eff": "~0.1.2",
+    "purescript-foldable-traversable": "~0.4.1",
+    "purescript-strings": "~0.7.1"
+  },
+  "devDependencies": {
+    "purescript-sets": "~0.5.3"
+  }
+}
