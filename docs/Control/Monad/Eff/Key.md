@@ -1,5 +1,11 @@
 ## Module Control.Monad.Eff.Key
 
+#### `getPlatform`
+
+``` purescript
+getPlatform :: forall eff. Eff (dom :: DOM | eff) Platform
+```
+
 #### `fromKeyCode`
 
 ``` purescript
