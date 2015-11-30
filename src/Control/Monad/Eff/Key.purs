@@ -26,14 +26,14 @@ parsePlatform = take 3 >>> parse
   parse _ = Key.Other
 
 getPlatform :: forall eff. Eff (dom :: DOM | eff) Key.Platform
-getPlatform = getPlatformString >>= parsePlatform >>> pure
+getPlatform = parsePlatform <$> getPlatformString
 
 fromKeyCode :: forall eff. Int -> Eff (dom :: DOM | eff) Key.Key
-fromKeyCode i = getPlatform >>= (flip Key.fromKeyCode i >>> pure)
+fromKeyCode i = flip Key.fromKeyCode i <$> getPlatform
 
 print :: forall eff. Key.Key -> Eff (dom :: DOM | eff) String
-print key = getPlatform >>= (flip Key.print key >>> pure)
+print key = flip Key.print key <$> getPlatform
 
 printCombination :: forall eff f. (Foldable f) => f Key.Key -> Eff (dom :: DOM | eff) String
-printCombination comb = getPlatform >>= (flip Key.printCombination comb >>> pure)
+printCombination comb = flip Key.printCombination comb <$> getPlatform
 
