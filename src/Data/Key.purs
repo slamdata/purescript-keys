@@ -24,11 +24,11 @@ module Data.Key
   , shift
   ) where
 
-import Prelude
+import Prelude (class Show, class Ord, class Eq, Ordering(EQ, GT, LT), show, (++), compare, (==), map, (>>>), ($), (<<<))
 import Data.Char (fromCharCode, toUpper)
 import Data.Array (singleton, nub, sort)
 import Data.String (fromChar, joinWith)
-import Data.Foldable (Foldable, foldMap)
+import Data.Foldable (class Foldable, foldMap)
 
 data Platform = Mac | Other
 
@@ -125,4 +125,3 @@ instance showKey :: Show Key where
   show Shift = "Shift"
   show (Character l) = "Character (" ++ show l ++ ")"
   show Enter = "Enter"
-
