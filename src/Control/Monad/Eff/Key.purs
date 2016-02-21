@@ -1,10 +1,9 @@
 module Control.Monad.Eff.Key (fromKeyCode, print, printCombination) where
 
-import Control.Monad.Eff.Class (MonadEff)
 import Control.Monad.Eff (Eff())
-import Data.Foldable (Foldable)
+import Data.Foldable (class Foldable)
 import Data.Key as Key
-import Prelude
+import Prelude (pure, flip, (>>>), (>>=))
 import DOM (DOM())
 import DOM.HTML.Types (Window())
 import DOM.HTML (window)
@@ -33,4 +32,3 @@ print key = getPlatform >>= (parsePlatform >>> flip Key.print key >>> pure)
 
 printCombination :: forall eff f. (Foldable f) => f Key.Key -> Eff (dom :: DOM | eff) String
 printCombination comb = getPlatform >>= (parsePlatform >>> flip Key.printCombination comb >>> pure)
-
